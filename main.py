@@ -15,7 +15,7 @@ class compile(commands.Cog):
 
     @commands.command(aliases=['cep'])
     async def compile_python(self, ctx, args):
-        exec(args, {'__builtins__': None, "print": p}, {})
+        exec(args, {'__builtins__': None, "print": self.p}, {})
         await ctx.send("```python\n" + self.PRINT_TXT + "\n```")
 
 
