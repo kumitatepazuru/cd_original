@@ -10,13 +10,12 @@ class compile(commands.Cog):
         self.bot = bot
         self.logger = logging.getLogger(__name__)
 
-    def p(self,*args, sep=' ', end='\n', file=None, flush: bool = False):
-        self.PRINT_TXT = sep.join(*args) + end
-
     @commands.command(aliases=['cep'])
     async def compile_python(self, ctx, *args):
-        exec('import os;os.system("echo danger!")', {'__builtins__': None,"print":self.p}, {})
-        ctx.send("```python\n"+self.PRINT_TXT+"\n```")
+        def p(*print, sep=' ', end='\n', file=None, flush: bool = False):
+            PRINT_TXT = sep.join(*print) + end
+            ctx.send("```python\n" + PRINT_TXT + "\n```")
+        exec('import os;os.system("echo danger!")', {'__builtins__': None,"print":p}, {})
 
 
 def setup(bot):
