@@ -15,7 +15,7 @@ class compile(commands.Cog):
         def p(*print, sep=' ', end='\n', file=None, flush: bool = False):
             PRINT_TXT = sep.join(*print) + end
             ctx.send("```python\n" + PRINT_TXT + "\n```")
-        exec('import os;os.system("echo danger!")', {'__builtins__': None,"print":p}, {})
+        exec('import os;os.system("echo danger!")', {'__builtins__': None}, {})
 
 
 def setup(bot):
