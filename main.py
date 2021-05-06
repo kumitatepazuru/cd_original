@@ -11,10 +11,12 @@ class compile(commands.Cog):
         self.logger = logging.getLogger(__name__)
 
     def p(self, *pr, sep=' ', end='\n', file=None, flush: bool = False):
-        self.PRINT_TXT += sep.join(*pr) + end
+        self.logger.debug(str(pr))
+        self.PRINT_TXT += sep.join(pr) + end
 
     @commands.command(aliases=['cep'])
     async def compile_python(self, ctx, args):
+        self.PRINT_TXT = ""
         exec(args, {'__builtins__': None, "print": self.p}, {})
         await ctx.send("```python\n" + self.PRINT_TXT + "\n```")
 
