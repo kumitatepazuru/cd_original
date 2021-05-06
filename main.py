@@ -16,7 +16,7 @@ class compile(commands.Cog):
 
     @commands.command(aliases=['cep'])
     async def compile_python(self, ctx, args):
-        exec(args, {'__builtins__': None, "print": lambda *ar, **kwargs: p(ctx, ar, kwargs)}, {})
+        exec(args, {'__builtins__': None, "print": lambda *ar, **kwargs: await p(ctx, ar, kwargs)}, {})
 
 
 def setup(bot):
